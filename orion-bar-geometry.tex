@@ -1,0 +1,563 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------
+% RMxAA Rho
+% LaTeX Template
+% Version X.X.X (25/06/2025)
+%
+% Authors: 
+% Carlos Román-Zúñiga (croman@astro.unam.mx)
+% Irene Cruz-Gonzaélz )icruzgonzalez@astro.unam.mx)
+% Contributors:
+% Guillermo Jimenez (memo.notess1@gmail.com)
+% Eduardo Gracidas (eduardo.gracidas29@gmail.com)
+% 
+% License:
+% XXXXXXXXXX
+% --------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------
+%                     ACKNOWLEDGMENTS
+% This template has been developed based on the original rho 
+% LaTeX class work, created by Luis Gullermo Jimenez Lopez 
+% and Eduardo Gracidas Reyes. Available in the Overleaf's 
+% template gallery.
+% --------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Sugerencia de usar 9pt 
+\documentclass[9pt,article,twoside]{rmaa-rho-class/rmaa-rho}
+\RMxAAtemplatetype{\RMxAA} % Select your article type
+% {\RMxAA} article template
+% {\RMxAC} conference template
+
+\let\tablenum\undefined % Undefine \tablenum
+\usepackage{siunitx}
+\sisetup{
+  % explicit "+" is useful for velocities
+  retain-explicit-plus = true,
+  % prefer 10^6 over 1 x 10^6
+  print-unity-mantissa = false,
+  % Use x +/- e instead of x(e)  
+  uncertainty-mode = separate,
+  % Use 2 +/- 1 km/s instead of (2 +/- 1) km/s 
+  separate-uncertainty-units = single,
+  % use multiple uncertainty types for photometric and extinction errors
+  uncertainty-descriptors = {rand, sys},
+  uncertainty-descriptor-mode = subscript,
+  % Make sure to use Oxford comma with lists
+  list-final-separator = {, \text{and}\ },
+  % Make sure to pick up bold font when used in section heading for instance
+  reset-text-series = false,
+  text-series-to-math = true,
+}
+\DeclareSIUnit\msun{\text{M\ensuremath{_\odot}}}
+\DeclareSIUnit\lsun{\text{L\ensuremath{_\odot}}}
+\DeclareSIUnit\rsun{\text{R\ensuremath{_\odot}}}
+\DeclareSIUnit\angstrom{\text {E}}
+\DeclareSIUnit\kms{\kilo\meter\per\second}
+\DeclareSIUnit\pcc{\per\centi\meter\cubed}
+\DeclareSIUnit\erg{\text{erg}}
+\DeclareSIUnit\cgsflux{\erg\per\second\per\centi\meter\squared}
+
+\def\th#1#2{\(\theta^{#1}\)\,Ori~#2}
+\newcommand\wn{\ensuremath{\tilde{\nu}}}
+
+% Chemical formulae
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+% Atomic term symbols
+\newcommand\Config[1]{\ensuremath{\mathrm{#1}}}
+\newcommand\Term[3]{\ensuremath{\mathrm{#1\ ^{#2}#3}}}
+\newcommand\Level[4]{\ensuremath{\mathrm{#1\ ^{#2}#3_{#4}}}}
+
+\newcommand\ha{\ensuremath{\text{H}\alpha}}
+\newcommand\lya{\ensuremath{\text{Ly}\alpha}}
+\newcommand\lyb{\ensuremath{\text{Ly}\beta}}
+\newcommand\FUV{\ensuremath{_{\text{FUV}}}}
+
+
+\newcommand\rmaatex{RMxAA~\LaTeX}
+\newcommand{\CS}[1]{\texttt{\textbackslash #1}}
+
+%----------------------------------------------------------
+% JOURNAL/HEADER INFORMATION
+%----------------------------------------------------------
+
+\vol{61}
+% Counter page
+\setcounter{page}{1}
+\pages{30-36}
+\thisyear{2025}
+
+\doi{\href{https://www.astroscu.unam.mx/rmaa/RMxAA..XX-X}{https://www.astroscu.unam.mx/rmaa/RMxAA..XX-X}}
+
+\newenvironment{Example}
+{\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}%
+  \item[]\itshape}
+  {\end{list}}
+
+%----------------------------------------------------------
+% TITLE
+%----------------------------------------------------------
+
+\title{Geometry of the Orion Bar: Concave or Convex?}
+
+%----------------------------------------------------------
+% AUTHORS AND AFFILIATIONS
+%----------------------------------------------------------
+
+\author[1]{William J. Henney \orcidlink{0000-0001-6208-9109}}
+\author[1]{Roberto Reyes}
+\author[1]{Javier García Vázquez}
+
+%----------------------------------------------------------
+
+\affil[1]{Universidad Nacional Autónoma de México, Instituto de Radioastronomía y Astrofísica. Antigua Carretera a Pátzcuaro 8701, Ex-Hda. San José de la Huerta, 58089, Morelia, Michoacán, México}
+
+% ----------------------------------------------------------
+% CORRESPONDING AUTHOR INFORMATION
+%----------------------------------------------------------
+
+\leadauthor{Henney et al.}
+\smalltitle{Orion Bar Geometry}
+
+%----------------------------------------------------------
+% ARTICLE INFORMATION
+%----------------------------------------------------------
+
+\corres{William J. Henney}
+\email{w.henney@irya.unam.mx}
+
+\received{April 16th, 2024}
+%\revised{April 16, 2024}
+\accepted{\today}
+%\published{May 21, 2024}
+
+\license{Texto de la licencia aquí}
+
+% incluir Resumen y Abstract
+
+\setbool{rho-abstract}{true} % Set false to hide the abstract
+\setbool{rho-resumen}{true} % Set false to hide the abstract
+
+%----------------------------------------------------------
+% ABSTRACT AND kEYWORDS
+%----------------------------------------------------------
+
+\begin{abstract}
+  I critically examen different geometrical models that have been proposed for the
+  geometry of the Orion Bar photodissociation region.
+  From a re-analysis of the of the \qty{21}{cm} \ion{H}{1} observations,
+  I show that the ionization front at the Bar must be convex,
+  which rules out important classes of models.
+  On the other hand, from the brightness profiles of recombination lines
+  and continuum, I show that maybe it is convex after all.
+  Furthermore, I show that small scale irregularities in the
+  ionization front and dissociation front are important for
+  analysing the apparent stratification and widths of different emission regions.
+  \end{abstract}
+
+\keywords{keyword 1, keyword 2, keyword 3, keyword 4, keyword 5}
+
+%----------------------------------------------------------
+% RESUMEN Y PALABRAS CLAVES
+%----------------------------------------------------------
+
+\begin{resumen}
+  Resumen en español.
+\end{resumen}
+
+
+%\pclave{palabra clave 1, palabra clave 2, palabra clave 3}
+
+%----------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+\pagestyle{fancy}\thispagestyle{firststyle}
+
+%----------------------------------------------------------
+
+\section{INTRODUCTION}
+
+\RMxAAstart{W}elcome to the \rmaatex template to prepare your academic article. Articles considered for publication in the main journal can be easily prepared using this template. The style of this template is based on the \textit{rho class} style\footnote{The RMxAA paper template is based on the rho LATEX class,
+created by Luis Guillermo Jiménez López and Eduardo Gracidas Reyes.}. It requires minimal or no typesetting adjustments to provide a version of your manuscript organization that is close to the final printed version. This style also has ample margins to allow for a comfortable number of words per line and leaves room for marginal notes to be added.
+
+The version of the rmaa-rho document class described in this User Guide is 1.0 (\today). Its use requires a relatively recent version of \LaTeX{}, although it is optimized to work directly online using \textbf{Overleaf}. The current version of the \LaTeX{} Project Public License is 1.3c (2008).  For the author who requires a general introduction to \LaTeX{}, we recommend starting at The LaTeX Project website \url{https://www.latex-project.org/about/}, or using the Overleaf LaTeX guide \url{https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1)}. 
+
+\section{STRUCTURE OF THE ORION BAR}
+\label{sec:structure-orion-bar}
+
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/bar-geometry-options}
+  \caption{Different classes of geometrical models that have been
+    proposed for the Orion Bar.  The sequence of models I, II, III, IV
+    are of increasing complexity, but also increasing scope and
+    explanatory power.  Models I\('\), II\('\), III\('\), on the other
+    hand, are disfavored due to either underperformance or
+    falsification (see text for further details).  For all models,
+    dark blue shading represents molecular gas, green shading
+    represents neutral gas, and light orange shading represents
+    ionized gas.  An example emission layer of thickness \(h\) and
+    radius of curvature \(R\) is indicated by thick red lines.  The
+    line-of-sight depth of the emission layer is denoted by \(L\).
+    The direction of illumination and the line of sight are indicated
+    by thin dotted lines.  }
+  \label{fig:bar-geometry}
+\end{figure*}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/orion-bar-oi-hst-zoom}
+  \caption{Fine-scale structure of the ionization front at the Orion Bar.
+    Grayscale image shows a \(90'' \times 90''\) section of a mosaic of
+    \textit{HST} WFPC2 observations \citep{Bally:2000a} in the F631N filter,
+    which mainly passes the [\ion{O}{1}] \SI{6300}{\angstrom} line.
+    The image has been high-pass filtered to remove large-scale brightness gradients
+    (\(> \SI{16}{arcsec}\)).
+    The principal ionization front of the Bright Bar runs diagonally from top-left to bottom-right.
+    It can be seen that the front is very irregular on scales of \num{1} to \SI{10}{mpc},
+    and even becomes disrupted completely in some segments.
+    Only in a few places is the front straight and regular enough for its true sharpness to be seen,
+    such as the small area shown in a zoomed box, where the width of the [\ion{O}{1}] ridge
+    can be seen to be less than \SI{1}{mpc}.
+    Apart from the Bright Bar ionization front,
+    other fine-scale features visible in the image are associated with
+    Herbig--Haro jets and proplyds.
+  }
+  \label{fig:bar-oi-hst}
+\end{figure*}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/alma-co-hcop-h2-dissoc-front}
+  \caption{Fine-scale structure of the dissociation front in the Orion
+    Bar.  Double white arrows mark out some instances of
+    stratification between emission of \chem{H_2} (blue) and heavier
+    molecules (green/yellow/red). In every instance \chem{H_2} is
+    displaced towards the irradiated side of the filament by \(1''\)
+    to \(2''\) (\(\approx \SI{0.003}{pc}\)).  Background image shows ALMA
+    mosaics \citep{Goicoechea:2016a} of the sub-mm \chem{CO}
+    \(J = 3 \to 2\) \SI{866.96}{\micron} \chem{HCO^+}
+    \SI{840.38}{\micron} emission lines in the red and green color
+    channels, respectively, with the boundary of the ALMA field shown
+    by the gray dashed line. The blue color channel of the background
+    image shows near-infrared vibrationally excited \chem{H_2}
+    \(v = 1 \to 0\ S(1)\) \SI{2.12}{\micron} emission, extracted from
+    narrow-band imaging with ESO's High Acuity Wide-field K-band
+    Imager \citetext{HAWK-I, \citealp{Kissler-Patig:2008a}}. The
+    \chem{H_2} image has been corrected for contamination by ionized
+    emission (mainly hydrogen Br\(\gamma\) recombination line), but has not
+    been continuum-subtracted.  As a result, scattered starlight
+    \citetext{cloudshine, \citealp{Foster:2006a}} is seen as a band
+    of diffuse emission that falls off smoothly behind the ionization
+    front. }
+  \label{fig:alma-dissoc-front}
+\end{figure*}
+
+% \begin{figure}
+%   \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
+%   \caption{Optical depth of select processes as a function of total
+%     hydrogen nucleon column density, calculated from static Cloudy
+%     simulations of the Orion Bar.  All optical depths and columns are
+%     measured with respect to the illuminating Trapezium stars, which
+%     are situated to the left in this figure.  Separate panels show two
+%     models that differ only in the assumed dust absorption opacity:
+%     (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
+%     opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
+%     \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
+%     are shown in blue. Continuum optical depths near \lyb{} (solid
+%     line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
+%     \SI{21}{cm} line optical depth is shown in green (long dashed
+%     line).  Optical depths to Rayleigh/Raman scattering for 4 observed
+%     bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
+%     are shown in red.}
+%   \label{fig:cloudy-bar-optical-depths}
+% \end{figure}
+% \begin{figure}
+%   \includegraphics[width=\linewidth]{figs/stellar-spectrum-fuv}
+%   \caption{(a) Predicted spectrum of Trapezium stars in vicinity of
+%     \lyb{} from POWR OB atmosphere models (black line), together with
+%     attenuation by Cloudy model of the Orion Bar (red filled shapes),
+%     extracted at a series of values of the neutral hydrogen column
+%     density, as marked. (b) Relative attenuation of the incident
+%     spectrum by line opacity only (that is, neglecting dust continuum
+%     opacity) in the Cloudy models, which shows the development of the
+%     \lyb{} damping wings as the column density increases.  In this
+%     panel, the \(x\) axis is labelled with \(\Delta\lambda_2\) in the optical
+%     domain, allowing direct comparison with the observations presented
+%     in Figure~\ref{fig:raman-compensated} (observed Raman bands are
+%     indicated by colored boxes). Note that the scale is linear in
+%     \(\lambda_1\), which is slightly non-linear in
+%     \(\Delta\lambda_2\).  Wavelengths of some of the more prominent stellar
+%     photospheric lines and nebular absorption lines are marked. }
+%   \label{fig:stellar-spectrum-fuv}
+% \end{figure}
+
+
+
+\subsection{Cloudy model predictions for the optical depths}
+\label{sec:cloudy-model-pred}
+
+In order to investigate the role of dust extinction in greater detail
+in more detail the 
+
+ 
+Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \SI{1.6e21}{cm^{-2}} and \SI{3.2e21}{cm^{-2}} in components A and B \citep{Abel:2006a}. 
+
+
+Geometry of bar: in \citet{Henney:2005b} I pointed out that a
+diverging cylindrical geometry is necessary to explain the sharp peak
+in the [\ion{N}{2}] emissivity seen at the ionization front.  It has
+been apparent since \citet{ODell:2000a} that the nebula contains many
+bar-like features.
+
+\citet{Salgado:2016a} had found low dust cross-section in Orion Bar
+PDR, but there are loopholes. First, they assume plane-parallel
+geometry with exactly edge-on viewing angle, while in reality it is a
+roughly cylindrical filament.  Second, they ignore scattering, see
+\citet{Watson:1998a}.  Also, density increase with depth
+
+
+\section{MODEL BRIGHTNESS PROFILES}
+\label{sec:proj-emiss-prof}
+
+
+
+Present the horn profiles and show the difference between the convex and concave case. Homogeneous layer, or more refined models for ionized flow and PDR. 
+
+
+\newcommand\vdw{vdW13}
+\newcommand\vlsr{\ensuremath{v_{\mathrm{lsr}}}}
+\section{\ion{H}{1} 21\,cm RADIATIVE TRANSFER}
+\label{sec:reanalysis-21-cm}
+
+Karl G.\ Jansky Very Large Array observations of the \ion{H}{1}
+\qty{21}{cm} line from the Orion Nebula and its surroundings at a
+spatial resolution of \(\approx 6''\) and a velocity resolution of
+\qty{0.77}{km.s^{-1}} were presented in \citet[hereafter
+vdW13]{van-der-Werf:2013a}.  The line is seen both in emission and
+absorption of the strong free-free continuum emitted by the ionized
+nebula.  The majority of the absorption arises in the foreground Veil
+at Local Standard of Rest velocities of
+\(\vlsr = \text{\qtyrange{-2}{+7}{km.s^{-1}}}\). Emission is seen
+primarily at more redshifted velocities of
+\qtyrange{+10}{+15}{km.s^{-1}}, similar to the velocities of the
+molecular gas seen in CO, although at large distances from the center
+of the nebula the Veil is also seen in emission.  The analysis of the
+absorption components by \vdw{} was carried out under the assumptions
+that (i)~all of the continuum emission arises from \emph{behind} the
+absorbing \chem{H^0} column (from the point of view of the Earth), and
+(ii)~line emission is negligible at velocities where absorption is
+detected.  These are both very good assumptions in the case of
+absorption by the foreground Veil, but they break down for the case of
+the Orion Bar, where both emission and absorption are seen at similar
+velocities and in spatially adjacent regions.  Given the wealth of
+information on the physical conditions and geometry that these data
+provide, it is worth reanalyzing them under less restrictive
+assumptions.
+
+\newcommand{\Ttb}{\ensuremath{\tilde{T}_{\mathrm{b}}}}
+\newcommand{\Tb}{\ensuremath{T_{\mathrm{b}}}}
+\newcommand{\Tc}{\ensuremath{{T_{\mathrm{c}}}}}
+\newcommand{\Te}{\ensuremath{T_{\mathrm{e}}}}
+\newcommand{\Ts}{\ensuremath{T_{\mathrm{s}}}}
+
+\begin{figure}
+  \centering
+  \caption{Three-layer sandwich structure for \ion{H}{1} \qty{21}{cm} radiative transfer.}
+  \label{fig:hii-hi-hii-sandwich}
+\end{figure}
+
+In the Rayleigh--Jeans limit, the frequency-dependent surface
+brightness \(I_\nu\) is characterized by the brightness temperature in
+each velocity channel: \(T_{\mathrm{b}}(v) = c^2 I_\nu / 2 k \nu^2\),
+where \(v/c = (\nu/\nu_0) - 1\) and \(\nu_0 = \qty{1.420405}{GHz}\).  The
+radiative transfer equation can be solved for an idealized three-layer
+sandwich structure (see Fig.~\ref{fig:hii-hi-hii-sandwich}),
+consisting of (1)~a background \chem{H^+} region with electron
+temperature \Te{} and free-free continuum optical depth \(\tau'\), (2)~an
+intermediate neutral \chem{H^0} layer with spin temperature \Ts{} and
+line optical depth \(\tau(v)\), and (3)~a foreground \chem{H^+} region
+with the electron temperature \Te{} and free-free continuum optical
+depth \(\tau''\). The continuum source function in regions~1 and~3 is
+\Te{}, whereas the line source function in region~2 is \Ts{}.
+Region~2 is assumed to have zero continuum optical depth.  Following
+\vdw{}, large-scale Milky Way \ion{H}{1} line emission along the line
+of sight through Orion is neglected since it is (a)~very faint
+compared with the nebula, with \(\Tb(v) < \qty{48}{K} \) at
+\(v = \qty{10}{km.s^{-1}}\) \citep{Green:1991a, Green:1993a}, and
+(b)~any emission that is smooth on angular scales below 7 arcminutes
+will be filtered out by the interferometer.
+ 
+At continuum frequencies just off the line, \(\tau(v) = 0\) and only
+regions~1 and 3 contribute to the observed brightness, yielding a
+continuum brightness temperature
+\begin{align}
+  \label{eq:Tcont}
+  \Tc & = \Te \biggl( 1 - e^{-(\tau' + \tau'')} \biggr) \\
+  & = \Tc' e^{-\tau''} + \Tc''
+  \ , \nonumber
+\end{align}
+where the second equality gives the decomposition into separate
+contributions from region~1: \(\Tc' = \Te (1 - e^{-\tau'})\), and
+region~3: \(\Tc'' = \Te (1 - e^{-\tau''})\).  At frequencies where the
+line opacity is significant, all three regions contribute, yielding
+\begin{equation}
+  \label{eq:Tline}
+  \Tb(v) =
+    \Tc' e^{-\left(\tau(v) + \tau''\right)} +
+    \Ts \biggl( 1 - e^{-\tau(v)} \biggr) e^{-\tau''} +
+    \Tc''
+  \ .
+\end{equation}
+For practical reasons related to the deconvolution of the
+interferometric data, the results of \vdw{} are presented in
+continuum-free form as \(\Ttb(v) = \Tb(v) - \Tc\).  Combining
+equation~\eqref{eq:Tcont} and \eqref{eq:Tline}, one finds
+\begin{equation}
+  \label{eq:Tb}
+  \Ttb(v) =
+  \bigl[ 1 - e^{-\tau(v)} \bigr] \,
+  \bigl[ 1 - \bigl(\Tc''/\Te\bigr)\bigr] \,
+  \bigl[  \Ts - \Tc' \bigr]  \ .
+\end{equation}
+The relative brightness temperature of the line, \(\Ttb(v)\), is
+therefore seen to be the product of three factors, given by the three
+sets of square brackets in equation~\eqref{eq:Tb}.  The first two
+factors are always positive since \(\tau(v) \ge 0\) and
+\(\Tc'' \le \Te\), but the third factor can take either sign.  When the
+continuum brightness temperature \(\Tc'\) of the background
+photoionized gas in region~1 exceeds the spin temperature \(\Ts\) of
+neutral hydrogen in region~2, then we see an absorption line:
+\(\Ttb(v) < 0\).  On the other hand, when \(\Ts\) is higher than
+\(\Tc'\), then we see an emission line: \(\Ttb(v) > 0\).  In either
+case, the maximum line strength will be found when region~2 is opaque
+(\(\tau(v) \gg 1\)) and region~3 is transparent (\(\Tc'' \ll \Te\)), yielding
+\(\max(|\Ttb(v)|) = |\Ts - \Tc'|\).
+
+\newcommand\fbg{\ensuremath{f_{\mathrm{bg}}}}
+
+The electron temperature in the ionized gas is expected to be roughly
+constant at \(\Te \approx \qty{11 000}{K}\) \citep{Dicker:2009a}, but this
+still leaves 4 unknown quantities, \(\tau(v)\), \(\Ts\), \(\Tc'\), and
+\(\Tc''\), to be determined from 2 observed quantities: \(\Tc\) and
+\(\Ttb(v)\).  Further assumptions must therefore be made in order to
+interpret the observations, but these can be guided by the observed
+spatial trends and simple geometric models.  For instance, in the
+Orion Bar the free-free continuum brightness temperature falls sharply
+across the ionization front from \(\Tc \approx \qty{3000}{K}\) on the ionized
+side, but then levels off to a roughly constant value of
+\(\Tc \approx \qty{600}{K}\) on the neutral side. Assuming that this constant
+value reflects unrelated foreground emission (probably ionized by
+\th2{A}) that overlays the entire Bar (this hypothesis is tested
+below), we have an upper limit to the background emission of
+\(\Tc - \qty{600}{K}\).  It can be further assumed that the emission
+from region~1 is a constant fraction, \fbg{}, of this upper limit:
+\begin{equation}
+  \label{eq:bg-emission}
+  \Tc' = \fbg \bigl( \Tc - \qty{600}{K} \bigr) \ .
+\end{equation}
+If the Bar geometry is a cylinder that is illuminated from the side
+(see Fig.~XXX), then \(\fbg = 0.5\) is appropriate.  If the Bar is
+illuminated from slightly behind, or if it is an escarpment, or if an
+additional background component is present (see
+\S~\ref{sec:structure-orion-bar}), then the fraction will be larger:
+\(0.5 < \fbg < 1.0\).
+
+Further progress can then be made by considering null points in the
+nebula where line emission and absorption cancel out. At such points
+\(\Ttb(v) \approx 0\), so that \(\Ts = \Tc'\) by equation~\eqref{eq:Tb}.
+Absorption component~M is identified by \vdw{} as associated with
+\chem{H^0} in the Bar, due to its velocity and spatial distribution.
+Component~M consists of a string of knots with
+\(\Ttb(v) = \text{\num{-200} to \qty{-400}{K}}\) at
+\(v \approx \qty{11}{km.s^{-1}}\).  They are arranged parallel to the Bar,
+just behind the ionization front at a relative position of roughly
+\qty{+0.006}{pc} (see Fig.~\ref{fig:raman-bar-profile}) and where the
+continuum brightness has fallen to \(\Tc \approx \qty{2200}{K}\). At greater
+distances from the ionization front the \ion{H}{1} at this velocity is
+seen in emission, reaching a peak of \(\Ttb(v) \approx \qty{+250}{K}\) at
+\qty{+0.030}{pc} where \(\Tc \approx \qty{750}{K}\).  The crossover null point
+where \(\Ttb(v) = 0\) occurs between these two at \qty{+0.012}{pc}
+where \(\Tc \approx \qty{1500}{K}\).
+
+
+\section{CONCEPT HIGHLIGHT BOX} 
+
+The new \rmaatex\ macro allows the authors to use a colored box to highlight a concept or equation, as shown in this example. The label and reference points of the section are included. Example: See the Concept box in Section~\ref{box:box1}.  
+
+
+    
+\begin{rhoenv}[frametitle=Highlight Concept Box]
+  Hello! This is an example of a concept highlight box (HCB) section. I can be placed anywhere in the body of the paper to briefly summarize the important concepts. We do not allow HCBs larger than 40 words \label{box:box1}
+\end{rhoenv}
+
+
+\section{FACILITIES}
+
+For observational research, authors must include a brief list of facilities and instruments used, as well as proper acknowledgment of public catalogs and virtual observatory resources.
+
+%----------------------------------------------------------
+
+\renewcommand{\refname}{REFERENCES}
+\bibliography{orion-bar-refs}
+
+%----------------------------------------------------------
+
+
+
+
+
+
+\section{ACKNOWLEDGEMENTS}
+
+Acknowledgements may be included to recognize funding sources and grants, to provide standardized acknowledgement text (including required references) for facilities or resources, and/or to recognize individuals who contributed to the research with any relevant discussion, resources, or services but are not listed as coauthors.
+
+
+
+\section{APPENDICES}
+
+If you have appendices to your article, you can use something like the following:\\
+    
+    \noindent\CS{begin}\verb|{appendices}|\\
+    \CS{section}\verb|{First Appendix}|\\
+    \CS{label}\verb|{sec:ap-A}}|\\
+    \CS{}\verb|{Text of first appendix.}|\\
+    \CS{section}\verb|{Second Appendix}|\\
+    \CS{label}\verb|{sec:ap-B}|\\
+    \CS{}\verb|{Text of second appendix.}|\\
+    \CS{end}\verb|{appendices}|\\
+
+The appendices follow the acknowledgments section but precede the bibliography section. Equations in the appendices are labeled A1, A2, B1, B2, etc..
+
+\section{CODES}
+
+    This macro includes the \textit{listings} package, which offers customized features for adding codes or pseudocodes. The package adds adequate syntax coloring for some of the most popular languages (C, C++, Python, 
+    and Matlab).
+
+    \nolinenumbers
+    \lstinputlisting[caption=Example of matlab code., 
+    label={lst:listing-Mat}, language=Matlab]{examples/codes/example.m}
+    \linenumbers
+
+\vspace{2cm}
+
+    \nolinenumbers
+    \lstinputlisting[caption=Example of Python code., 
+    label={lst:listing-py}, language=Python]{examples/codes/codito.py}
+    \linenumbers
+
+
+
+    \nolinenumbers
+    \lstinputlisting[caption=Example of Pseudo-code., 
+    label={lst:listing-pseudo}]{examples/codes/pseudo.p}
+    \linenumbers
+
+    During the paper edition process, line numbering will be enabled to facilitate referee revision. We recommend placing the command \verb|\nolinenumbers| at the beginning and \verb|\linenumbers| at the end of the code, respectively. This temporarily removes the line numbering for the manuscript and provides code line numbers.
+
+\end{document}
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
