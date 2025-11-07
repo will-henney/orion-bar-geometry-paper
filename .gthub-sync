@@ -1,0 +1,11 @@
+commit fe4a1b0a5078b202f5cf3d11eb644ea1993751e8
+Author: William Henney <whenney@gmail.com>
+Date:   Thu Nov 6 22:04:27 2025 -0600
+
+    Move paper from the dib-scatter repo and update fro new rev mex
+
+commit 429ace111cddd6477b4a1197c519c60aaae31f7b
+Author: William Henney <whenney@gmail.com>
+Date:   Thu Nov 6 18:20:15 2025 -0600
+
+    Initial Overleaf Import
